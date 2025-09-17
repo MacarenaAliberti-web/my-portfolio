@@ -1,6 +1,7 @@
-// app/portfolio.tsx
-import Portfolio  from '../../components/Portfolio'
+// app/portfolio/page.tsx
+import Portfolio from "@/components/portfolio/Portfolio"
 
-export default function PagePortfolio() {
+export default function PortfolioPage() {
   return <Portfolio />
 }
+
