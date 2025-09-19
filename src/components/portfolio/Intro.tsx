@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react"
 import { FiArrowRight } from "react-icons/fi"
 import { FaMapMarkerAlt } from "react-icons/fa"
 import AnimatedStarsBackground from "../AnimatedStarsBackground"
@@ -7,6 +8,13 @@ interface Props {
 }
 
 export default function Intro({ onNext }: Props) {
+  const [animate, setAnimate] = useState(true)
+
+  useEffect(() => {
+    const timeout = setTimeout(() => setAnimate(false), 3000)
+    return () => clearTimeout(timeout)
+  }, [])
+
   return (
     <section className="snap-start min-w-screen h-screen overflow-y-auto relative flex items-center justify-center px-4 bg-black text-white">
       {/* Fondo animado */}
@@ -26,6 +34,8 @@ export default function Intro({ onNext }: Props) {
           Especializada en Front-End
         </p>
 
+        <hr className="my-6 border-t border-white/20 w-24 mx-auto" />
+
         {/* Info adicional */}
         <div className="flex flex-wrap items-center justify-center gap-4 mt-4 text-xs sm:text-sm text-gray-300">
           <span className="flex items-center gap-1.5">
@@ -41,8 +51,11 @@ export default function Intro({ onNext }: Props) {
 
       {/* Flecha de avance */}
       <button
+        type="button"
         onClick={onNext}
-        className="absolute right-6 sm:right-10 top-1/2 transform -translate-y-1/2 bg-white/20 p-3 rounded-full hover:bg-white/40 transition animate-bounce z-20 focus:outline-none focus:ring-2 focus:ring-white/50"
+        className={`absolute right-4 sm:right-10 top-1/2 transform -translate-y-1/2 bg-white/20 p-3 rounded-full hover:bg-white/40 transition focus:outline-none focus:ring-2 focus:ring-white/50 ${
+          animate ? "animate-bounce hover:scale-105" : "hover:scale-105"
+        } z-20`}
         aria-label="Ir a la siguiente sección"
       >
         <FiArrowRight size={24} className="text-white" />

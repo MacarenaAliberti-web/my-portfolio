@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react"
 import { FiArrowRight, FiArrowLeft } from "react-icons/fi"
 import AnimatedStarsBackground from "../AnimatedStarsBackground"
 
@@ -8,17 +9,46 @@ interface Props {
 }
 
 export default function Projects({ onPrev, onNext }: Props) {
+  const [animate, setAnimate] = useState(true)
+
+  useEffect(() => {
+    const timeout = setTimeout(() => setAnimate(false), 3000)
+    return () => clearTimeout(timeout)
+  }, [])
+
   return (
     <section className="snap-start flex-shrink-0 w-screen min-h-screen overflow-y-auto relative flex flex-col items-center px-4 sm:px-6 bg-gray-950 text-white">
-      {/* Fondo animado */}
       <AnimatedStarsBackground />
 
       {/* Contenido principal */}
       <div className="z-20 max-w-6xl w-full pt-10 sm:pt-32 pb-24 px-2 sm:px-6">
-        <h3 className="text-3xl sm:text-4xl font-bold mb-12 drop-shadow-lg text-center whitespace-nowrap">
-  Proyectos Destacados
-</h3>
+        <h3 className="text-3xl sm:text-4xl font-bold mb-6 drop-shadow-lg text-center whitespace-nowrap">
+          Proyectos Destacados
+        </h3>
 
+        {/* Flechas solo en MOBILE (debajo del título) */}
+        <div className="flex justify-center items-center gap-6 mb-10 md:hidden">
+          <button
+            onClick={onPrev}
+            aria-label="Ir al proyecto anterior"
+            className={`bg-white/20 hover:bg-white/40 text-white p-2 rounded-full transition focus:outline-none focus:ring-2 focus:ring-white/50 ${
+              animate ? "animate-bounce" : ""
+            }`}
+          >
+            <FiArrowLeft size={18} />
+          </button>
+          <button
+            onClick={onNext}
+            aria-label="Ir al siguiente proyecto"
+            className={`bg-white/20 hover:bg-white/40 text-white p-2 rounded-full transition focus:outline-none focus:ring-2 focus:ring-white/50 ${
+              animate ? "animate-bounce" : ""
+            }`}
+          >
+            <FiArrowRight size={18} />
+          </button>
+        </div>
+
+        {/* Grid de proyectos */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* Proyecto 1 */}
           <div className="bg-gray-900/80 border border-white/10 backdrop-blur-sm rounded-2xl shadow-2xl p-6 flex flex-col justify-between text-center transition duration-300 hover:shadow-cyan-500/30 hover:scale-[1.01]">
@@ -86,26 +116,25 @@ export default function Projects({ onPrev, onNext }: Props) {
         </div>
       </div>
 
-      {/* Flechas de navegación */}
-      <div className="z-20 w-full flex justify-center items-center gap-6 -mt-6
-                  md:absolute md:top-[42%] md:left-0 md:right-0 md:transform md:-translate-y-1/2 md:justify-between md:px-10 md:mt-0">
+      {/* Flechas solo en DESKTOP (a los costados) */}
+      <div className="hidden md:flex z-30 absolute top-1/2 left-0 right-0 justify-between items-center px-10 -translate-y-1/2 pointer-events-none">
         <button
           onClick={onPrev}
           aria-label="Ir al proyecto anterior"
-          className="bg-white/20 hover:bg-white/40 text-white p-3 rounded-full animate-bounce transition focus:outline-none focus:ring-2 focus:ring-white/50"
+          className={`pointer-events-auto bg-white/20 hover:bg-white/40 text-white p-3 rounded-full transition focus:outline-none focus:ring-2 focus:ring-white/50 ${
+            animate ? "animate-bounce" : ""
+          }`}
         >
-          <FiArrowLeft className="size-6 md:size-7" />
-
+          <FiArrowLeft size={22} />
         </button>
-
         <button
           onClick={onNext}
           aria-label="Ir al siguiente proyecto"
-          className="bg-white/20 hover:bg-white/40 text-white p-3 rounded-full animate-bounce transition focus:outline-none focus:ring-2 focus:ring-white/50"
+          className={`pointer-events-auto bg-white/20 hover:bg-white/40 text-white p-3 rounded-full transition focus:outline-none focus:ring-2 focus:ring-white/50 ${
+            animate ? "animate-bounce" : ""
+          }`}
         >
-        <FiArrowRight className="size-6 md:size-7" />
-
-
+          <FiArrowRight size={22} />
         </button>
       </div>
     </section>

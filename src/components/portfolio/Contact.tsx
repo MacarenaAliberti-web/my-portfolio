@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react"
 import { FiArrowLeft } from "react-icons/fi"
 import { FaGithub, FaLinkedin } from "react-icons/fa"
 import { MdEmail } from "react-icons/md"
@@ -9,6 +10,13 @@ interface Props {
 }
 
 export default function Contact({ onPrev }: Props) {
+  const [animate, setAnimate] = useState(true)
+
+  useEffect(() => {
+    const timeout = setTimeout(() => setAnimate(false), 3000)
+    return () => clearTimeout(timeout)
+  }, [])
+
   return (
     <section className="snap-start flex-shrink-0 w-full min-h-screen overflow-y-auto relative flex flex-col items-center justify-center px-4 bg-gray-950 text-white">
       {/* Fondo animado */}
@@ -16,10 +24,22 @@ export default function Contact({ onPrev }: Props) {
 
       {/* Contenido */}
       <div className="z-20 max-w-3xl w-full mx-auto px-4 pt-20 sm:pt-32 pb-24 text-center">
-       <h3 className="text-2xl sm:text-4xl font-extrabold mb-6 drop-shadow-lg text-balance">
-  🚀 ¿Buscás una desarrolladora Full Stack?
-</h3>
+        <h3 className="text-2xl sm:text-4xl font-extrabold mb-6 drop-shadow-lg text-balance">
+          🚀 ¿Buscás una desarrolladora Full Stack?
+        </h3>
 
+        {/* Flecha solo en mobile: debajo del título */}
+        <div className="flex justify-center items-center mb-8 md:hidden">
+          <button
+            onClick={onPrev}
+            className={`bg-white/20 hover:bg-white/40 text-white p-2 rounded-full transition focus:outline-none focus:ring-2 focus:ring-white/50 ${
+              animate ? "animate-bounce" : ""
+            }`}
+            aria-label="Volver a la sección anterior"
+          >
+            <FiArrowLeft size={18} />
+          </button>
+        </div>
 
         <div className="bg-gray-900/80 rounded-3xl shadow-2xl border border-white/10 backdrop-blur-md p-6 sm:p-10 overflow-y-auto">
           <p className="text-sm sm:text-lg text-gray-300 leading-relaxed mb-6 text-balance">
@@ -59,15 +79,16 @@ export default function Contact({ onPrev }: Props) {
         </div>
       </div>
 
-      {/* Flecha */}
-      <div className="z-20 w-full flex justify-center items-center gap-6 -mt-6
-                  md:absolute md:top-[45%] md:left-0 md:right-0 md:transform md:-translate-y-1/2 md:justify-start md:px-10 md:mt-0">
+      {/* Flecha solo en DESKTOP (costado izquierdo) */}
+      <div className="hidden md:flex z-30 absolute top-1/2 left-0 transform -translate-y-1/2 px-10">
         <button
           onClick={onPrev}
-          className="bg-white/20 hover:bg-white/40 text-white p-3 sm:p-4 md:p-5 rounded-full animate-bounce transition duration-300 focus:outline-none focus:ring-2 focus:ring-white/50"
+          className={`bg-white/20 hover:bg-white/40 text-white p-3 rounded-full transition focus:outline-none focus:ring-2 focus:ring-white/50 ${
+            animate ? "animate-bounce" : ""
+          }`}
           aria-label="Volver a la sección anterior"
         >
-          <FiArrowLeft size={24} className="sm:size-6 md:size-7" />
+          <FiArrowLeft size={22} />
         </button>
       </div>
     </section>
