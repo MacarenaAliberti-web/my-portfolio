@@ -9,6 +9,7 @@ import {
   SiVercel, SiRender, SiPostman, SiCloudinary, SiSupabase, SiStripe,
   SiMongoose, SiTypeorm
 } from "react-icons/si"
+import { VscCode } from "react-icons/vsc"
 
 interface Props {
   onPrev: () => void
@@ -21,12 +22,23 @@ export default function Stack({ onPrev, onNext }: Props) {
   const [frontendVisible, setFrontendVisible] = useState<boolean[]>([])
   const [backendVisible, setBackendVisible] = useState<boolean[]>([])
   const [toolsVisible, setToolsVisible] = useState<boolean[]>([])
-
   const [animate, setAnimate] = useState(true)
+  const [selectedTech, setSelectedTech] = useState<string | null>(null)
 
   useEffect(() => {
     const timeout = setTimeout(() => setAnimate(false), 3000)
     return () => clearTimeout(timeout)
+  }, [])
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (!(e.target as HTMLElement).closest(".tech-icon")) {
+        setSelectedTech(null)
+      }
+    }
+
+    document.addEventListener("click", handleClickOutside)
+    return () => document.removeEventListener("click", handleClickOutside)
   }, [])
 
   const frontend = [
@@ -54,6 +66,7 @@ export default function Stack({ onPrev, onNext }: Props) {
   ]
 
   const tools = [
+    { name: "VS Code", icon: <VscCode className="text-blue-500 w-12 h-12" /> },
     { name: "Git", icon: <SiGit className="text-orange-500 w-12 h-12" /> },
     { name: "GitHub", icon: <SiGithub className="text-white w-12 h-12" /> },
     { name: "Vercel", icon: <SiVercel className="text-white w-12 h-12" /> },
@@ -96,9 +109,7 @@ export default function Stack({ onPrev, onNext }: Props) {
           }, 100)
         }
       },
-      {
-        threshold: 0.5,
-      }
+      { threshold: 0.5 }
     )
 
     if (sectionRef.current) {
@@ -112,17 +123,28 @@ export default function Stack({ onPrev, onNext }: Props) {
     }
   }, [])
 
-  const renderIcons = (list: { name: string; icon: JSX.Element }[], visible: boolean[]) =>
+  const renderIcons = (
+    list: { name: string; icon: JSX.Element }[],
+    visible: boolean[]
+  ) =>
     list.map((tech, i) => (
       <div
         key={tech.name}
-        className={`transform transition-all duration-500 
+        onClick={() => setSelectedTech(prev => (prev === tech.name ? null : tech.name))}
+        className={`tech-icon flex flex-col items-center cursor-pointer transform transition-all duration-500 
           ${visible[i] ? "opacity-100 scale-100 animate-fadeIn" : "opacity-0 scale-90"} 
           hover:scale-110 icon-glow`}
         style={{ animationDelay: `${i * 100}ms` }}
         title={tech.name}
       >
         {tech.icon}
+        <span
+          className={`mt-2 text-sm sm:hidden transition-opacity duration-300 ${
+            selectedTech === tech.name ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          {tech.name}
+        </span>
       </div>
     ))
 
