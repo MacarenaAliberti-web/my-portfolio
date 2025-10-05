@@ -24,12 +24,8 @@ export default function Contact({ onPrev }: Props) {
 
       {/* Contenido */}
       <div className="z-20 max-w-3xl w-full mx-auto px-4 pt-20 sm:pt-32 pb-24 text-center">
-        <h3 className="text-2xl sm:text-4xl font-extrabold mb-6 drop-shadow-lg text-balance">
-          🚀 ¿Buscás una desarrolladora Full Stack?
-        </h3>
-
-        {/* Flecha solo en mobile: debajo del título */}
-        <div className="flex justify-center items-center mb-8 md:hidden">
+        {/* Título + Flecha en MOBILE */}
+        <div className="flex items-center justify-center gap-3 mb-6 md:hidden">
           <button
             onClick={onPrev}
             className={`bg-white/20 hover:bg-white/40 text-white p-2 rounded-full transition focus:outline-none focus:ring-2 focus:ring-white/50 ${
@@ -39,11 +35,21 @@ export default function Contact({ onPrev }: Props) {
           >
             <FiArrowLeft size={18} />
           </button>
+          <h3 className="text-xl sm:text-3xl font-extrabold drop-shadow-lg text-balance">
+             Conectemos 🚀
+          </h3>
         </div>
+
+        {/* Título solo en DESKTOP */}
+        <h3 className="hidden md:block text-3xl sm:text-4xl font-extrabold mb-6 drop-shadow-lg text-balance text-center">
+           Conectemos 🚀
+        </h3>
 
         <div className="bg-gray-900/80 rounded-3xl shadow-2xl border border-white/10 backdrop-blur-md p-6 sm:p-10 overflow-y-auto">
           <p className="text-sm sm:text-lg text-gray-300 leading-relaxed mb-6 text-balance">
-            Perfil <span className="text-cyan-400 font-semibold">técnico, proactivo y orientado a resultados</span>, con habilidades de liderazgo y dominio de tecnologías modernas. <br />
+            ¿Buscas una Desarrolladora Full Stack? 
+            </p>
+             <p className="text-sm sm:text-lg text-gray-300 leading-relaxed mb-6 text-balance"> Perfil <span className="text-cyan-400 font-semibold">técnico, proactivo y orientado a resultados</span>, con habilidades de liderazgo y dominio de tecnologías modernas. <br />
             <strong className="text-white">Especializada en soluciones escalables</strong> que impulsan el crecimiento de startups.
           </p>
 

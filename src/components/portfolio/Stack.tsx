@@ -156,24 +156,12 @@ export default function Stack({ onPrev, onNext }: Props) {
       <AnimatedStarsBackground />
 
       <div className="z-20 max-w-6xl w-full px-2 sm:px-6 pt-10 sm:pt-32 pb-24 text-center">
-        <h3 className="text-3xl sm:text-4xl font-bold mb-6 drop-shadow-lg">Stack Tecnológico</h3>
-
-        {/* Flechas MOBILE */}
-        <div className="flex justify-center items-center gap-6 mb-10 md:hidden">
-          <button
-            onClick={onPrev}
-            className={`bg-white/20 hover:bg-white/40 text-white p-2 rounded-full transition duration-300 focus:outline-none focus:ring-2 focus:ring-white/50 ${animate ? "animate-bounce" : ""}`}
-            aria-label="Ir a la sección anterior"
-          >
-            <FiArrowLeft size={18} />
-          </button>
-          <button
-            onClick={onNext}
-            className={`bg-white/20 hover:bg-white/40 text-white p-2 rounded-full transition duration-300 focus:outline-none focus:ring-2 focus:ring-white/50 ${animate ? "animate-bounce" : ""}`}
-            aria-label="Ir a la siguiente sección"
-          >
-            <FiArrowRight size={18} />
-          </button>
+        {/* Título + flecha mobile */}
+        <div className="flex items-center justify-center mb-10 md:mb-6">
+          <h3 className="text-3xl sm:text-4xl font-bold drop-shadow-lg">
+            Stack Tecnológico
+          </h3>
+         
         </div>
 
         {/* GRID */}
@@ -195,7 +183,7 @@ export default function Stack({ onPrev, onNext }: Props) {
         </div>
       </div>
 
-      {/* Flechas DESKTOP */}
+      {/* Flechas desktop */}
       <div className="hidden md:flex z-30 absolute top-1/2 left-0 right-0 justify-between items-center px-10 -translate-y-1/2 pointer-events-none">
         <button
           onClick={onPrev}

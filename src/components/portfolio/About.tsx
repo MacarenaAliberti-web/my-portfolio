@@ -26,32 +26,15 @@ export default function About({ onPrev, onNext, className }: Props) {
 
       {/* Contenido */}
       <div className="z-20 max-w-prose w-full pt-16 sm:pt-20 pb-24 text-center">
-        <h3 className="text-2xl sm:text-3xl font-bold mb-6 drop-shadow-lg">
-          Sobre Mí
-        </h3>
-
-        {/* Flechas móviles: centradas debajo del título */}
-        <div className="flex justify-center items-center gap-6 mb-10 md:hidden">
-          <button
-            onClick={onPrev}
-            className={`bg-white/20 hover:bg-white/40 text-white p-2 rounded-full transition focus:outline-none focus:ring-2 focus:ring-white/50 ${
-              animate ? "animate-bounce" : ""
-            }`}
-            aria-label="Ir a la sección anterior"
-          >
-            <FiArrowLeft size={18} />
-          </button>
-          <button
-            onClick={onNext}
-            className={`bg-white/20 hover:bg-white/40 text-white p-2 rounded-full transition focus:outline-none focus:ring-2 focus:ring-white/50 ${
-              animate ? "animate-bounce" : ""
-            }`}
-            aria-label="Ir a la siguiente sección"
-          >
-            <FiArrowRight size={18} />
-          </button>
+        {/* Título + flecha mobile */}
+        <div className="flex items-center justify-center mb-10 md:mb-6">
+          <h3 className="text-2xl sm:text-3xl font-bold drop-shadow-lg">
+            Sobre Mí
+          </h3>
+          
         </div>
 
+        {/* Texto */}
         <div className="bg-gray-900/80 rounded-2xl shadow-2xl border border-white/10 backdrop-blur-sm p-6 sm:p-8">
           <p className="text-sm sm:text-base md:text-lg text-gray-200 leading-relaxed">
             Comencé mi trayectoria en educación, donde aprendí a comunicar ideas de forma clara,
