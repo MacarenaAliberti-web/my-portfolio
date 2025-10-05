@@ -78,7 +78,8 @@ export default function Projects({ onPrev, onNext }: Props) {
     >
       <AnimatedStarsBackground />
 
-      <div className="z-20 max-w-6xl w-full pt-6 sm:pt-10 pb-24 px-2 sm:px-6">
+      <div className="z-20 max-w-6xl w-full px-2 sm:px-6 pt-10 sm:pt-32 pb-24 text-center">
+
         {/* Título */}
         <div className="flex items-center justify-center mb-10 md:mb-6">
           <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold drop-shadow-lg text-center">
