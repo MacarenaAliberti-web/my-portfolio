@@ -17,7 +17,7 @@ export default function Experience({ onPrev, onNext }: Props) {
 
   return (
     <section
-      className="snap-start flex-shrink-0 w-screen min-h-screen overflow-y-auto relative flex flex-col items-center px-4 sm:px-6 bg-gray-950 text-white"
+      className="snap-start flex-shrink-0 w-screen h-screen overflow-y-auto relative flex flex-col items-center px-4 sm:px-6 bg-gray-950 text-white"
       aria-label="Sección experiencia"
     >
       <AnimatedStarsBackground />
