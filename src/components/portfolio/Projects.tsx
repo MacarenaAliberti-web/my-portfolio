@@ -62,6 +62,7 @@ const projects: Project[] = [
     hoverShadow: "hover:shadow-cyan-500/30",
   },
 ];
+
 export default function Projects({ onPrev, onNext }: Props) {
   const [animate, setAnimate] = useState(true);
 
@@ -72,21 +73,21 @@ export default function Projects({ onPrev, onNext }: Props) {
 
   return (
     <section
-      className="snap-start flex-shrink-0 w-screen min-h-screen overflow-y-auto relative flex flex-col items-center px-4 sm:px-6 bg-gray-950 text-white"
+      className="snap-start flex-shrink-0 w-screen h-screen overflow-y-auto relative flex flex-col items-center px-4 sm:px-6 bg-gray-950 text-white"
       aria-label="Sección proyectos destacados"
     >
       <AnimatedStarsBackground />
 
-      <div className="z-20 max-w-6xl w-full px-2 sm:px-6 pt-10 sm:pt-32 pb-24 text-center">
+      <div className="z-20 max-w-6xl w-full px-2 sm:px-6 pt-10 sm:pt-20 pb-16 text-center my-auto">
         {/* Título */}
-        <div className="flex items-center justify-center mb-10 md:mb-6">
+        <div className="flex items-center justify-center mb-8 md:mb-6">
           <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold drop-shadow-lg text-center">
             Proyectos Destacados
           </h3>
         </div>
 
         {/* Grid proyectos */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map(
             ({
               id,
@@ -103,32 +104,32 @@ export default function Projects({ onPrev, onNext }: Props) {
             }) => (
               <article
                 key={id}
-                className={`bg-gray-900/80 border border-white/10 backdrop-blur-sm rounded-2xl shadow-2xl p-6 flex flex-col justify-between text-center transition duration-300 ${hoverShadow} hover:scale-[1.01]`}
+                className={`bg-gray-900/80 border border-white/10 backdrop-blur-sm rounded-2xl shadow-2xl p-5 flex flex-col justify-between text-center transition duration-300 ${hoverShadow} hover:scale-[1.01]`}
               >
                 <img
                   loading="lazy"
                   src={image}
                   alt={title}
-                  className={`w-full h-40 rounded-lg mb-4 ${
+                  className={`w-full h-32 rounded-lg mb-3 ${
                     id === "heartsypaws" ? "object-cover" : "object-contain"
                   }`}
                 />
                 <div>
                   <h4
-                    className={`text-xl font-semibold mb-2 ${
+                    className={`text-lg font-semibold mb-2 ${
                       bgColor === "bg-cyan-600"
                         ? "text-cyan-300"
                         : bgColor === "bg-pink-500"
                           ? "text-pink-400"
-                          : bgColor === "bg-yellow-500"
-                            ? "text-yellow-400"
-                            : "text-white"
+                          : "text-white"
                     }`}
                   >
                     {title}
                   </h4>
-                  <p className="text-gray-300 text-sm">{description}</p>
-                  <p className="mt-2 text-sm text-gray-400">
+                  <p className="text-gray-300 text-xs sm:text-sm">
+                    {description}
+                  </p>
+                  <p className="mt-2 text-xs text-gray-400">
                     {technologiesFrontend && (
                       <>
                         <strong>Frontend:</strong> {technologiesFrontend}
@@ -152,7 +153,7 @@ export default function Projects({ onPrev, onNext }: Props) {
                   href={link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`${bgColor} mt-4 inline-block text-sm text-white font-medium py-1.5 px-4 rounded transition mx-auto hover:brightness-110`}
+                  className={`${bgColor} mt-3 inline-block text-xs sm:text-sm text-white font-medium py-1.5 px-4 rounded transition mx-auto hover:brightness-110`}
                 >
                   {linkLabel}
                 </a>
@@ -160,28 +161,28 @@ export default function Projects({ onPrev, onNext }: Props) {
             ),
           )}
         </div>
+      </div>
 
-        {/* Flechas Desktop */}
-        <div className="hidden md:flex z-30 absolute top-1/2 left-0 right-0 justify-between items-center px-10 -translate-y-1/2 pointer-events-none">
-          <button
-            onClick={onPrev}
-            aria-label="Ir al proyecto anterior"
-            className={`pointer-events-auto bg-white/20 hover:bg-white/40 text-white p-3 rounded-full transition focus:outline-none focus:ring-2 focus:ring-white/50 ${
-              animate ? "animate-bounce" : ""
-            }`}
-          >
-            <FiArrowLeft size={22} />
-          </button>
-          <button
-            onClick={onNext}
-            aria-label="Ir al siguiente proyecto"
-            className={`pointer-events-auto bg-white/20 hover:bg-white/40 text-white p-3 rounded-full transition focus:outline-none focus:ring-2 focus:ring-white/50 ${
-              animate ? "animate-bounce" : ""
-            }`}
-          >
-            <FiArrowRight size={22} />
-          </button>
-        </div>
+      {/* Flechas Desktop */}
+      <div className="hidden md:flex z-30 absolute top-1/2 left-0 right-0 justify-between items-center px-10 -translate-y-1/2 pointer-events-none">
+        <button
+          onClick={onPrev}
+          aria-label="Ir al proyecto anterior"
+          className={`pointer-events-auto bg-white/20 hover:bg-white/40 text-white p-3 rounded-full transition focus:outline-none focus:ring-2 focus:ring-white/50 ${
+            animate ? "animate-bounce" : ""
+          }`}
+        >
+          <FiArrowLeft size={22} />
+        </button>
+        <button
+          onClick={onNext}
+          aria-label="Ir al siguiente proyecto"
+          className={`pointer-events-auto bg-white/20 hover:bg-white/40 text-white p-3 rounded-full transition focus:outline-none focus:ring-2 focus:ring-white/50 ${
+            animate ? "animate-bounce" : ""
+          }`}
+        >
+          <FiArrowRight size={22} />
+        </button>
       </div>
     </section>
   );

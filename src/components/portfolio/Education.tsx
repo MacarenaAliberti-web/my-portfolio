@@ -35,13 +35,13 @@ export default function Education({ onPrev, onNext }: Props) {
 
   return (
     <section
-      className="snap-start flex-shrink-0 w-screen min-h-screen overflow-y-auto relative flex flex-col items-center px-4 sm:px-6 bg-gray-950 text-white"
+      className="snap-start flex-shrink-0 w-screen h-screen overflow-y-auto relative flex flex-col items-center justify-center px-4 sm:px-6 bg-gray-950 text-white"
       aria-label="Sección educación"
     >
       <AnimatedStarsBackground />
 
-      <div className="z-20 max-w-2xl w-full px-2 sm:px-6 pt-10 sm:pt-32 pb-24 text-center">
-        <div className="flex items-center justify-center mb-10 md:mb-6">
+      <div className="z-20 max-w-2xl w-full px-2 sm:px-6 text-center my-auto">
+        <div className="flex items-center justify-center mb-6">
           <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold drop-shadow-lg">
             Educación
           </h3>
@@ -74,7 +74,7 @@ export default function Education({ onPrev, onNext }: Props) {
         </button>
         <button
           onClick={onNext}
-          aria-label="Ir a la siguiente sección"
+          aria-label="Ir al siguiente proyecto"
           className={`pointer-events-auto bg-white/20 hover:bg-white/40 text-white p-3 rounded-full transition focus:outline-none focus:ring-2 focus:ring-white/50 ${
             animate ? "animate-bounce" : ""
           }`}

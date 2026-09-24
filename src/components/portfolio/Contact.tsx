@@ -18,14 +18,14 @@ export default function Contact({ onPrev }: Props) {
   }, []);
 
   return (
-    <section className="snap-start flex-shrink-0 w-full min-h-screen overflow-y-auto relative flex flex-col items-center justify-center px-4 bg-gray-950 text-white">
+    <section className="snap-start flex-shrink-0 w-screen h-screen overflow-y-auto relative flex flex-col items-center justify-center px-4 bg-gray-950 text-white">
       {/* Fondo animado */}
       <AnimatedStarsBackground />
 
       {/* Contenido */}
-      <div className="z-20 max-w-3xl w-full mx-auto px-4 pt-20 sm:pt-32 pb-24 text-center">
+      <div className="z-20 max-w-3xl w-full mx-auto px-4 text-center my-auto">
         {/* Título + Flecha en MOBILE */}
-        <div className="flex items-center justify-center gap-3 mb-6 md:hidden">
+        <div className="flex items-center justify-center gap-3 mb-4 md:hidden">
           <button
             onClick={onPrev}
             className={`bg-white/20 hover:bg-white/40 text-white p-2 rounded-full transition focus:outline-none focus:ring-2 focus:ring-white/50 ${
@@ -41,15 +41,15 @@ export default function Contact({ onPrev }: Props) {
         </div>
 
         {/* Título solo en DESKTOP */}
-        <h3 className="hidden md:block text-3xl sm:text-4xl font-extrabold mb-6 drop-shadow-lg text-balance text-center">
+        <h3 className="hidden md:block text-3xl sm:text-4xl font-extrabold mb-4 drop-shadow-lg text-balance text-center">
           Conectemos 🚀
         </h3>
 
-        <div className="bg-gray-900/80 rounded-3xl shadow-2xl border border-white/10 backdrop-blur-md p-6 sm:p-10 overflow-y-auto">
-          <p className="text-sm sm:text-lg text-gray-300 leading-relaxed mb-6 text-balance">
+        <div className="bg-gray-900/80 rounded-3xl shadow-2xl border border-white/10 backdrop-blur-md p-6 sm:p-8">
+          <p className="text-sm sm:text-base text-gray-300 leading-relaxed mb-4 text-balance">
             ¿Buscás una Desarrolladora Full Stack Junior?
           </p>
-          <p className="text-sm sm:text-lg text-gray-300 leading-relaxed mb-6 text-balance">
+          <p className="text-sm sm:text-base text-gray-300 leading-relaxed mb-6 text-balance">
             Perfil{" "}
             <span className="text-cyan-400 font-semibold">
               técnico, proactivo y con ganas de aprender
@@ -65,7 +65,7 @@ export default function Contact({ onPrev }: Props) {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full">
             <a
               href="mailto:alibertimacarena@gmail.com"
-              className="w-full sm:w-auto px-6 py-3 rounded-xl border border-cyan-500 text-cyan-400 hover:bg-cyan-500/10 transition font-medium flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-5 py-2.5 rounded-xl border border-cyan-500 text-cyan-400 hover:bg-cyan-500/10 transition font-medium flex items-center justify-center gap-2 text-sm"
             >
               <MdEmail className="text-lg" /> Email
             </a>
@@ -73,7 +73,7 @@ export default function Contact({ onPrev }: Props) {
               href="https://github.com/MacarenaAliberti-web"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto px-6 py-3 rounded-xl border border-cyan-500 text-cyan-400 hover:bg-cyan-500/10 transition font-medium flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-5 py-2.5 rounded-xl border border-cyan-500 text-cyan-400 hover:bg-cyan-500/10 transition font-medium flex items-center justify-center gap-2 text-sm"
             >
               <FaGithub className="text-lg" /> GitHub
             </a>
@@ -81,13 +81,13 @@ export default function Contact({ onPrev }: Props) {
               href="https://www.linkedin.com/in/macarena-aliberti-dev/"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto px-6 py-3 rounded-xl border border-cyan-500 text-cyan-400 hover:bg-cyan-500/10 transition font-medium flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-5 py-2.5 rounded-xl border border-cyan-500 text-cyan-400 hover:bg-cyan-500/10 transition font-medium flex items-center justify-center gap-2 text-sm"
             >
               <FaLinkedin className="text-lg" /> LinkedIn
             </a>
           </div>
 
-          <p className="mt-10 text-sm text-gray-400">
+          <p className="mt-6 text-xs sm:text-sm text-gray-400">
             Impulsando ideas con tecnología y creatividad 💡
           </p>
         </div>
