@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { FiArrowRight } from "react-icons/fi";
 import { FaMapMarkerAlt } from "react-icons/fa";
-import AnimatedStarsBackground from "../AnimatedStarsBackground";
 
 interface Props {
   onNext: () => void;
@@ -16,9 +15,10 @@ export default function Intro({ onNext }: Props) {
   }, []);
 
   return (
-    <section className="snap-start min-w-screen h-screen overflow-y-auto relative flex items-center justify-center px-4 bg-black text-white">
-      <AnimatedStarsBackground />
-
+    <section
+      className="snap-start min-w-screen h-screen overflow-y-auto relative flex items-center justify-center px-4 text-white"
+      style={{ backgroundColor: "#000000" }}
+    >
       <div className="relative z-10 flex flex-col items-center justify-start px-4 pt-10 text-center max-w-3xl mx-auto">
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent drop-shadow-md text-balance">
           Macarena Aliberti
