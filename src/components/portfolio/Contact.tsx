@@ -1,21 +1,21 @@
-import { useEffect, useState } from "react"
-import { FiArrowLeft } from "react-icons/fi"
-import { FaGithub, FaLinkedin } from "react-icons/fa"
-import { MdEmail } from "react-icons/md"
-import AnimatedStarsBackground from "../AnimatedStarsBackground"
+import { useEffect, useState } from "react";
+import { FiArrowLeft } from "react-icons/fi";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
+import AnimatedStarsBackground from "../AnimatedStarsBackground";
 
 interface Props {
-  onPrev: () => void
-  className?: string
+  onPrev: () => void;
+  className?: string;
 }
 
 export default function Contact({ onPrev }: Props) {
-  const [animate, setAnimate] = useState(true)
+  const [animate, setAnimate] = useState(true);
 
   useEffect(() => {
-    const timeout = setTimeout(() => setAnimate(false), 3000)
-    return () => clearTimeout(timeout)
-  }, [])
+    const timeout = setTimeout(() => setAnimate(false), 3000);
+    return () => clearTimeout(timeout);
+  }, []);
 
   return (
     <section className="snap-start flex-shrink-0 w-full min-h-screen overflow-y-auto relative flex flex-col items-center justify-center px-4 bg-gray-950 text-white">
@@ -36,23 +36,31 @@ export default function Contact({ onPrev }: Props) {
             <FiArrowLeft size={18} />
           </button>
           <h3 className="text-xl sm:text-3xl font-extrabold drop-shadow-lg text-balance">
-             Conectemos 🚀
+            Conectemos 🚀
           </h3>
         </div>
 
         {/* Título solo en DESKTOP */}
         <h3 className="hidden md:block text-3xl sm:text-4xl font-extrabold mb-6 drop-shadow-lg text-balance text-center">
-           Conectemos 🚀
+          Conectemos 🚀
         </h3>
 
         <div className="bg-gray-900/80 rounded-3xl shadow-2xl border border-white/10 backdrop-blur-md p-6 sm:p-10 overflow-y-auto">
           <p className="text-sm sm:text-lg text-gray-300 leading-relaxed mb-6 text-balance">
-            ¿Buscas una Desarrolladora Full Stack? 
-            </p>
-             <p className="text-sm sm:text-lg text-gray-300 leading-relaxed mb-6 text-balance"> Perfil <span className="text-cyan-400 font-semibold">técnico, proactivo y orientado a resultados</span>, con habilidades de liderazgo y dominio de tecnologías modernas. <br />
-            <strong className="text-white">Especializada en soluciones escalables</strong> que impulsan el crecimiento de startups.
+            ¿Buscás una Desarrolladora Full Stack Junior?
           </p>
-
+          <p className="text-sm sm:text-lg text-gray-300 leading-relaxed mb-6 text-balance">
+            Perfil{" "}
+            <span className="text-cyan-400 font-semibold">
+              técnico, proactivo y con ganas de aprender
+            </span>
+            , con más de 10 años de experiencia liderando equipos y comunicando
+            con claridad. <br />
+            <strong className="text-white">
+              Construí dos proyectos full stack de punta a punta
+            </strong>
+            , uno de ellos en uso real hoy.
+          </p>
           {/* Links */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full">
             <a
@@ -70,7 +78,7 @@ export default function Contact({ onPrev }: Props) {
               <FaGithub className="text-lg" /> GitHub
             </a>
             <a
-              href="https://www.linkedin.com/in/macarena-aliberti-440b03373/"
+              href="https://www.linkedin.com/in/macarena-aliberti-dev/"
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto px-6 py-3 rounded-xl border border-cyan-500 text-cyan-400 hover:bg-cyan-500/10 transition font-medium flex items-center justify-center gap-2"
@@ -98,5 +106,5 @@ export default function Contact({ onPrev }: Props) {
         </button>
       </div>
     </section>
-  )
+  );
 }

@@ -1,27 +1,31 @@
-"use client"
+"use client";
 
-import React, { useRef } from "react"
-import About from "./About"
-import Stack from "./Stack"
-import Projects from "./Projects"
-import Contact from "./Contact"
-import Intro from "./Intro"
-
+import React, { useRef } from "react";
+import Intro from "./Intro";
+import About from "./About";
+import Stack from "./Stack";
+import Projects from "./Projects";
+import Experience from "./Experience";
+import Education from "./Education";
+import Contact from "./Contact";
 
 export default function Portfolio() {
-  const mainRef = useRef<HTMLDivElement>(null)
+  const mainRef = useRef<HTMLDivElement>(null);
 
   const handleScrollRight = () => {
     if (mainRef.current) {
-      mainRef.current.scrollBy({ left: window.innerWidth, behavior: "smooth" })
+      mainRef.current.scrollBy({ left: window.innerWidth, behavior: "smooth" });
     }
-  }
+  };
 
   const handleScrollLeft = () => {
     if (mainRef.current) {
-      mainRef.current.scrollBy({ left: -window.innerWidth, behavior: "smooth" })
+      mainRef.current.scrollBy({
+        left: -window.innerWidth,
+        behavior: "smooth",
+      });
     }
-  }
+  };
 
   return (
     <main
@@ -32,7 +36,9 @@ export default function Portfolio() {
       <About onPrev={handleScrollLeft} onNext={handleScrollRight} />
       <Stack onPrev={handleScrollLeft} onNext={handleScrollRight} />
       <Projects onPrev={handleScrollLeft} onNext={handleScrollRight} />
+      <Experience onPrev={handleScrollLeft} onNext={handleScrollRight} />
+      <Education onPrev={handleScrollLeft} onNext={handleScrollRight} />
       <Contact onPrev={handleScrollLeft} />
     </main>
-  )
+  );
 }

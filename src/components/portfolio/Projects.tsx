@@ -1,75 +1,74 @@
-import { useEffect, useState } from "react"
-import { FiArrowRight, FiArrowLeft } from "react-icons/fi"
-import AnimatedStarsBackground from "../AnimatedStarsBackground"
+import { useEffect, useState } from "react";
+import { FiArrowRight, FiArrowLeft } from "react-icons/fi";
+import AnimatedStarsBackground from "../AnimatedStarsBackground";
 
 interface Props {
-  onPrev: () => void
-  onNext: () => void
+  onPrev: () => void;
+  onNext: () => void;
 }
 
 interface Project {
-  id: string
-  title: string
-  description: string
-  technologies?: string
-  technologiesFrontend?: string
-  technologiesBackend?: string
-  image: string
-  link: string
-  linkLabel: string
-  bgColor: string
-  hoverShadow: string
+  id: string;
+  title: string;
+  description: string;
+  technologies?: string;
+  technologiesFrontend?: string;
+  technologiesBackend?: string;
+  image: string;
+  link: string;
+  linkLabel: string;
+  bgColor: string;
+  hoverShadow: string;
 }
 
 const projects: Project[] = [
   {
-    id: "heartsypaws",
-    title: "Hearts & Paws 🐾",
+    id: "maletfit",
+    title: "MaletFit 🏋️",
     description:
-      "Plataforma para ONGs dedicadas al rescate animal. Gestión de animales, campañas y adopciones.",
-    technologies:
-      "Next.js, React, Tailwind, Node.js, Express, PostgreSQL, MongoDB",
-    image: "/heartsypaws.jpg",
-    link: "https://repo-prueba-zeta.vercel.app/",
+      "SaaS de gestión de turnos, reservas y rutinas de entrenamiento. Lo uso hoy con mis alumnos en clases online.",
+    technologiesFrontend:
+      "Next.js 16, React, TypeScript, Tailwind CSS, Shadcn UI",
+    technologiesBackend: "NestJS, Prisma, PostgreSQL (Supabase), JWT",
+    image: "/maletfit.jpeg",
+    link: "https://maletfit-frontend.vercel.app",
     linkLabel: "Ver Proyecto",
-    bgColor: "bg-cyan-600",
-    hoverShadow: "hover:shadow-cyan-500/30",
+    bgColor: "bg-green-600",
+    hoverShadow: "hover:shadow-green-500/30",
   },
   {
-    id: "ecommerce",
-    title: "E-commerce Full Stack 🛒",
+    id: "zhyra",
+    title: "ZHYRA 🛍️",
     description:
-      "Tienda online con JWT, carrito, vistas dinámicas y panel de usuario.",
-    technologiesFrontend: "Next.js, React, Tailwind, Zustand",
-    technologiesBackend: "Express, TypeScript, PostgreSQL, JWT, Swagger",
-    image: "/ecommerce.jpg",
-    link: "https://github.com/MacarenaAliberti-web/E-commerce",
-    linkLabel: "Ver Repositorio",
+      "E-commerce full stack en producción, desarrollado en equipo. Hice gran parte del frontend, login con Google, Mercado Pago y el panel de administración.",
+    technologiesFrontend: "Next.js, React, Tailwind CSS, Context API",
+    technologiesBackend: "NestJS, TypeScript, Prisma, PostgreSQL (Supabase)",
+    image: "/zhyra.jpeg",
+    link: "https://zhyra.online",
+    linkLabel: "Ver Tienda",
     bgColor: "bg-pink-500",
     hoverShadow: "hover:shadow-pink-400/30",
   },
   {
-    id: "gestor-turnos",
-    title: "Gestión de Turnos 🗓️",
+    id: "heartsypaws",
+    title: "Hearts & Paws 🐾",
     description:
-      "Aplicación Full Stack para reservar turnos médicos. Autenticación, horarios y usuarios.",
-    technologies:
-      "React + Vite, Bootstrap, TypeScript, Express, TypeORM, PostgreSQL",
-    image: "/clinica.jpg",
-    link: "https://github.com/MacarenaAliberti-web/gestor-de-turnos",
-    linkLabel: "Ver Repositorio",
-    bgColor: "bg-yellow-500",
-    hoverShadow: "hover:shadow-yellow-400/30",
+      "Plataforma para ONGs de rescate animal. Diseñé la interfaz en Figma y desarrollé gran parte del frontend, en un equipo de 6 personas.",
+    technologies: "Next.js, React, Tailwind CSS, Figma",
+    image: "/heartsypaws.jpg",
+    link: "https://github.com/MacarenaAliberti-web/frontend-hearts-paws-",
+    linkLabel: "Ver Código",
+    bgColor: "bg-cyan-600",
+    hoverShadow: "hover:shadow-cyan-500/30",
   },
-]
-
+];
 export default function Projects({ onPrev, onNext }: Props) {
-  const [animate, setAnimate] = useState(true)
+  const [animate, setAnimate] = useState(true);
 
   useEffect(() => {
-    const timeout = setTimeout(() => setAnimate(false), 3000)
-    return () => clearTimeout(timeout)
-  }, [])
+    const timeout = setTimeout(() => setAnimate(false), 3000);
+    return () => clearTimeout(timeout);
+  }, []);
 
   return (
     <section
@@ -79,7 +78,6 @@ export default function Projects({ onPrev, onNext }: Props) {
       <AnimatedStarsBackground />
 
       <div className="z-20 max-w-6xl w-full px-2 sm:px-6 pt-10 sm:pt-32 pb-24 text-center">
-
         {/* Título */}
         <div className="flex items-center justify-center mb-10 md:mb-6">
           <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold drop-shadow-lg text-center">
@@ -111,7 +109,9 @@ export default function Projects({ onPrev, onNext }: Props) {
                   loading="lazy"
                   src={image}
                   alt={title}
-                  className="w-full h-40 object-cover rounded-lg mb-4"
+                  className={`w-full h-40 rounded-lg mb-4 ${
+                    id === "heartsypaws" ? "object-cover" : "object-contain"
+                  }`}
                 />
                 <div>
                   <h4
@@ -119,10 +119,10 @@ export default function Projects({ onPrev, onNext }: Props) {
                       bgColor === "bg-cyan-600"
                         ? "text-cyan-300"
                         : bgColor === "bg-pink-500"
-                        ? "text-pink-400"
-                        : bgColor === "bg-yellow-500"
-                        ? "text-yellow-400"
-                        : "text-white"
+                          ? "text-pink-400"
+                          : bgColor === "bg-yellow-500"
+                            ? "text-yellow-400"
+                            : "text-white"
                     }`}
                   >
                     {title}
@@ -157,7 +157,7 @@ export default function Projects({ onPrev, onNext }: Props) {
                   {linkLabel}
                 </a>
               </article>
-            )
+            ),
           )}
         </div>
 
@@ -184,5 +184,5 @@ export default function Projects({ onPrev, onNext }: Props) {
         </div>
       </div>
     </section>
-  )
+  );
 }

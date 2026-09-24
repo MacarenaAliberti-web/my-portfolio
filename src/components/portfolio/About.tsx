@@ -1,20 +1,20 @@
-import { useEffect, useState } from "react"
-import { FiArrowRight, FiArrowLeft } from "react-icons/fi"
-import AnimatedStarsBackground from "../AnimatedStarsBackground"
+import { useEffect, useState } from "react";
+import { FiArrowRight, FiArrowLeft } from "react-icons/fi";
+import AnimatedStarsBackground from "../AnimatedStarsBackground";
 
 interface Props {
-  onPrev: () => void
-  onNext: () => void
-  className?: string
+  onPrev: () => void;
+  onNext: () => void;
+  className?: string;
 }
 
 export default function About({ onPrev, onNext, className }: Props) {
-  const [animate, setAnimate] = useState(true)
+  const [animate, setAnimate] = useState(true);
 
   useEffect(() => {
-    const timeout = setTimeout(() => setAnimate(false), 3000)
-    return () => clearTimeout(timeout)
-  }, [])
+    const timeout = setTimeout(() => setAnimate(false), 3000);
+    return () => clearTimeout(timeout);
+  }, []);
 
   return (
     <section
@@ -31,20 +31,25 @@ export default function About({ onPrev, onNext, className }: Props) {
           <h3 className="text-2xl sm:text-3xl font-bold drop-shadow-lg">
             Sobre Mí
           </h3>
-          
         </div>
 
         {/* Texto */}
         <div className="bg-gray-900/80 rounded-2xl shadow-2xl border border-white/10 backdrop-blur-sm p-6 sm:p-8">
           <p className="text-sm sm:text-base md:text-lg text-gray-200 leading-relaxed">
-            Comencé mi trayectoria en educación, donde aprendí a comunicar ideas de forma clara,
-            organizar equipos y potenciar el trabajo colectivo, y me acerqué a la programación a través de capacitaciones.
-            Con el tiempo, elegí reinventarme profesionalmente como desarrolladora.
+            Comencé mi trayectoria en educación, donde aprendí a comunicar ideas
+            de forma clara, organizar equipos y potenciar el trabajo colectivo,
+            y me acerqué a la programación a través del bootcamp de Henry. Con
+            el tiempo, elegí reinventarme profesionalmente como desarrolladora.
           </p>
           <p className="text-sm sm:text-base md:text-lg text-gray-200 leading-relaxed mt-4">
-            Mi enfoque está en el desarrollo <strong>Front-End</strong>, creando interfaces modernas y funcionales que aporten valor usando
-            <strong> Next.js, React, TypeScript y Tailwind CSS</strong>. Busco integrarme a proyectos innovadores, aportando visión estratégica,
-            organización y comunicación clara que faciliten el trabajo en equipo.
+            Mi enfoque está en el desarrollo <strong>Full Stack</strong>,
+            construyendo aplicaciones de punta a punta que aporten valor real,
+            con
+            <strong> Next.js, React, TypeScript y Tailwind CSS</strong> en el
+            frontend, y <strong>NestJS, Prisma y PostgreSQL</strong> en el
+            backend. Busco integrarme a un equipo remoto, aportando
+            organización, comunicación clara y una mirada pedagógica que
+            facilita el trabajo colectivo.
           </p>
         </div>
       </div>
@@ -71,5 +76,5 @@ export default function About({ onPrev, onNext, className }: Props) {
         </button>
       </div>
     </section>
-  )
+  );
 }
